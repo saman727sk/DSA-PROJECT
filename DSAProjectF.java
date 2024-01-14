@@ -6,7 +6,8 @@ import DSAProjectF.stackLL;
 import DSAProjectF.stackDLL;
 import DSAProjectF.simpleQueueArray;
 import DSAProjectF.circularQueueArray;
-import DSAProjectF.simpleQueueSLL;
+import DSAProjectF.QueueDLL;
+import DSAProjectF.QueueSLL;
 import org.w3c.dom.Node;
 public class DSAProjectF {
     private static int A[] ;
@@ -14,13 +15,9 @@ public class DSAProjectF {
     private static int LB=0;
     private static int size;
     private static int stackChoice;
-    private static int value;
-   // private static int top;
+    // private static int top;
     private static int x;
-  //  private static int F;
-   // private static int R=-1;
-    private static int item;
-    private static int top = LB-1;
+  private static int top = LB-1;
    // private static int start;
     private static Node start=null;
     public static void main(String[] args) {
@@ -775,7 +772,7 @@ A[j]=tem;
                 break;
 
             case 2:
-            stackLL(sc);
+               stackLL(sc);
             //stackPush(sc);
                 break;
 
@@ -953,10 +950,7 @@ System.out.println("4-exit");
         System.out.println("3-exit");
     }
  public static void simpleQueueArray(Scanner sc){
-    System.out.print("Enter the size of the queue: ");
-        size = sc.nextInt();
-        A = new int[size];
-        
+    simpleQueueArray.Queue() ;
     do{
         simpleQueueADisplay();
         int choice=sc.nextInt();
@@ -966,7 +960,7 @@ System.out.println("4-exit");
                 //SqueueATraverse(sc);
                 break;
             case 2:
-            simpleQueueArray.EnqueueA( sc);
+            simpleQueueArray.EnqueueA( );
                // SqueueAPush(sc);
                 break;
             case 3:
@@ -990,21 +984,19 @@ System.out.println("4-exit");
         System.out.println("4-exit");
  }
  public static void circularQueueArray(Scanner sc){
+    circularQueueArray.Queue();
     do{
         circularQueueADisplay();
         int choice=sc.nextInt();
         switch (choice) {
             case 1:
             circularQueueArray.TraverseCQA();
-                //SqueueATraverse(sc);
                 break;
             case 2:
-            circularQueueArray.EnqueueCQA( sc);
-               // SqueueAPush(sc);
+            circularQueueArray.EnqueueCQA( );
                 break;
             case 3:
             circularQueueArray.DequeueCQA(); 
-            //SqueueAPop(sc);
             break;
             case 4:
             System.out.println("exit");
@@ -1015,6 +1007,7 @@ System.out.println("4-exit");
         }
     }
     while(true);
+    
  }
  public static void circularQueueADisplay(){
         System.out.println("1-traverse queue");
@@ -1022,87 +1015,60 @@ System.out.println("4-exit");
         System.out.println("3-pop queue");
         System.out.println("4-exit");
  }
+
 public static void  QueueSLL(Scanner sc){
-    do {
-        queueSLLDisplay();
-        int queuechoice = sc.nextInt();
+    
+        
+    do{
+        QueueSLLDisplay();
+        int choice=sc.nextInt();
+        switch (choice) {
+            case 1:
+            QueueSLL.TraverseSQSLL();
+                break;
+            case 2:
+            QueueSLL.EnqueueSLL( );
+                break;
+            case 3:
+            QueueSLL.DequeueSLL(); 
+            break;
+            case 4:
+            System.out.println("exit");
+            return;
+            default:
+            System.out.println("invalid choice");
+                break;
+        }
+    }
+    while(true);
+ }
+ public static void QueueSLLDisplay(){
+        System.out.println("1-traverse queue");
+        System.out.println("2-push queue");
+        System.out.println("3-pop queue");
+        System.out.println("4-exit");
+ }
+ 
 
-        switch (queuechoice) {
-            case 1:
-             simpleQueueSLL(sc);
-                break;
-            case 2:
-              circularQueueSLL(sc);
-                break;
-            case 3:
-                System.out.println("Exiting queue operations. Returning to the main menu.");
-                return; // This will exit the queueOperations loop
-            default:
-                System.out.println("Invalid choice. Please choose again.");
-        }
-    } while (true);
-}
-public static void queueSLLDisplay() {
-    System.out.println("1-simple queue");
-    System.out.println("2-circular queue");
-    System.out.println("3-exit");
-}
-public static void  simpleQueueSLL(Scanner sc){
-    //System.out.print("Enter the size of the queue: ");
-    //    size = sc.nextInt();
-     //   A = new int[size];
-        
-    do{
-        simpleQueueSLLDisplay();
-        int choice=sc.nextInt();
-        switch (choice) {
-            case 1:
-            simpleQueueSLL.TraverseSQSLL();
-                //SqueueATraverse(sc);
-                break;
-            case 2:
-            simpleQueueSLL.EnqueueSLL( sc);
-               // SqueueAPush(sc);
-                break;
-            case 3:
-            simpleQueueSLL.DequeueSLL(); 
-            //SqueueAPop(sc);
-            break;
-            case 4:
-            System.out.println("exit");
-            return;
-            default:
-            System.out.println("invalid choice");
-                break;
-        }
-    }
-    while(true);
- }
- public static void simpleQueueSLLDisplay(){
-        System.out.println("1-traverse queue");
-        System.out.println("2-push queue");
-        System.out.println("3-pop queue");
-        System.out.println("4-exit");
- }
- public static void  circularQueueSLL(Scanner sc){
+public static void QueueDLL(Scanner sc){
     System.out.print("Enter the size of the queue: ");
         size = sc.nextInt();
         A = new int[size];
         
     do{
-        circularQueueSLLDisplay();
+        QueueDLLDisplay();
         int choice=sc.nextInt();
         switch (choice) {
             case 1:
-            circularQueueSLL.TraverseSQSLL();
+            QueueDLL.TraverseSQDLL();
                 //SqueueATraverse(sc);
                 break;
             case 2:
-            circularQueueSLL.EnqueueSLL( sc);
+            QueueDLL.enqueueDLL();
                // SqueueAPush(sc);
                 break;
             case 3:
-            circularQueueSLL.DequeueSLL(); 
+            QueueDLL.dequeueDLL(); 
             //SqueueAPop(sc);
             break;
             case 4:
@@ -1115,111 +1081,13 @@ public static void  simpleQueueSLL(Scanner sc){
     }
     while(true);
  }
- public static void circularQueueSLLDisplay(){
+ public static void QueueDLLDisplay(){
         System.out.println("1-traverse queue");
         System.out.println("2-push queue");
         System.out.println("3-pop queue");
         System.out.println("4-exit");
  }
-public static void  QueueDLL(Scanner sc){
-    do {
-        queueDLLDisplay();
-        int queuechoice = sc.nextInt();
 
-        switch (queuechoice) {
-            case 1:
-             simpleQueueDLL(sc);
-                break;
-            case 2:
-              circularQueueDLL(sc);
-                break;
-            case 3:
-                System.out.println("Exiting queue operations. Returning to the main menu.");
-                return; // This will exit the queueOperations loop
-            default:
-                System.out.println("Invalid choice. Please choose again.");
-        }
-    } while (true);
-}
-public static void queueDLLDisplay() {
-    System.out.println("1-simple queue");
-    System.out.println("2-circular queue");
-    System.out.println("3-exit");
-}
-public static void simpleQueueDLL(Scanner sc){
-    System.out.print("Enter the size of the queue: ");
-        size = sc.nextInt();
-        A = new int[size];
-        
-    do{
-        simpleQueueDLLDisplay();
-        int choice=sc.nextInt();
-        switch (choice) {
-            case 1:
-            simpleQueueDLL.TraverseSQDLL();
-                //SqueueATraverse(sc);
-                break;
-            case 2:
-            simpleQueueDLL.EnqueueDLL( sc);
-               // SqueueAPush(sc);
-                break;
-            case 3:
-            simpleQueueDLL.DequeueDLL(); 
-            //SqueueAPop(sc);
-            break;
-            case 4:
-            System.out.println("exit");
-            return;
-            default:
-            System.out.println("invalid choice");
-                break;
-        }
-    }
-    while(true);
- }
- public static void simpleQueueDLLDisplay(){
-        System.out.println("1-traverse queue");
-        System.out.println("2-push queue");
-        System.out.println("3-pop queue");
-        System.out.println("4-exit");
- }
- public static void circularQueueDLL(Scanner sc){
-    System.out.print("Enter the size of the queue: ");
-        size = sc.nextInt();
-        A = new int[size];
-        
-    do{
-        circularQueueDLLDisplay();
-        int choice=sc.nextInt();
-        switch (choice) {
-            case 1:
-            circularQueueDLL.TraverseSQDLL();
-                //SqueueATraverse(sc);
-                break;
-            case 2:
-            circularQueueDLL.EnqueueDLL( sc);
-               // SqueueAPush(sc);
-                break;
-            case 3:
-            circularQueueDLL.DequeueDLL(); 
-            //SqueueAPop(sc);
-            break;
-            case 4:
-            System.out.println("exit");
-            return;
-            default:
-            System.out.println("invalid choice");
-                break;
-        }
-    }
-    while(true);
- }
- public static void circularQueueDLLDisplay(){
-        System.out.println("1-traverse queue");
-        System.out.println("2-push queue");
-        System.out.println("3-pop queue");
-        System.out.println("4-exit");
- }
      public static void linkedListOperations(Scanner sc) {
         do {
             linkedlistDisplay();
@@ -1247,7 +1115,7 @@ public static void simpleQueueDLL(Scanner sc){
     }
      public static void  linkedlist(Scanner sc){
         
-       // insertionOpertionSLL(sc);
+      
         do{
             Single_linkedListDisplay();
             int choice =sc.nextInt();
@@ -1271,12 +1139,8 @@ public static void simpleQueueDLL(Scanner sc){
     }
     public static void Single_linkedListDisplay() {
         System.out.println("Linked list operations:");
-        //System.out.println("1. Traverse");
         System.out.println("1.insertion");
-        //System.out.println("3. Add at the end");
-        //System.out.println("4- add in midle");
         System.out.println("2. Deletion");
-        //System.out.println("6. Delete  last node");
         System.out.println("3. Exit");
         System.out.print("Enter your choice: ");}
     public static void insertionOpertionSLL(Scanner sc){
@@ -1578,8 +1442,6 @@ public static void simpleQueueDLL(Scanner sc){
             }while(true);
          }
         public static void  deletionInMiddle_Display_DLL(){
-           // System.out.println("1-deletion in middle before  given node");
-           // System.out.println("2-deletion in middle after given node");
             System.out.println("1-deletion at exact middle node");
             System.out.println("2-deletion at mid search node");
             System.out.println("3-traverse the linked list");
