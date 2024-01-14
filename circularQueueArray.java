@@ -2,74 +2,123 @@ package DSAProjectF;
 import java.util.Scanner;
 public class circularQueueArray{
     static Scanner sc = new Scanner(System.in);
-    static int choice;
-
+    //static int choice;
+    static int choice, F, R,CF,CR, item, size;
+    static final int lb = 0;
+    static int[] Q;
+    static int[] CQ;
+   public static void Queue() {
+        System.out.print("\033[H\033[2J");
+        System.out.println("YOU HAVE SELECTED  QUEUE");
+        System.out.println();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("ENTER SIZE OF THE QUEUE"+" ");
+        size = scanner.nextInt();
+        Q = new int[size];
+        CQ = new int[20];
+        F  = lb - 1;
+        R  = lb - 1;
+        CF = lb-1;
+        CR = lb-1;}
  public static void TraverseCQA(){
+    System.out.print("\033[H\033[2J");
+        System.out.println("YOU HAVE SELECTED TRAVERSE");
+        System.out.println();
+        if (CF == lb - 1) {
+            System.out.println("QUEUE IS EMPTY");
+            System.out.println("RETURNING.....");
+            return;
+        }
+
+        if (CF <= CR) {
+            for (int i = CF; i <= CR; i++) {
+                System.out.print("[" + CQ[i] + "]");
+            }
+        } else {
+            for (int i = lb; i <= CR; i++) {
+                System.out.print("[" + CQ[i] + "]");
+            }
+            for (int i = CF; i <= (size + lb - 1); i++) {
+                System.out.print("[" + CQ[i] + "]");
+            }
+        }
+
+        System.out.println();
    
-    if (F == LB - 1) {
-        System.out.println("Queue is Empty");
-        return;
-    }
+}
+public static void EnqueueCQA(){
+     char ch = 'y';
+     do{
+     System.out.print("\033[H\033[2J");
+     System.out.println("YOU HAVE SELECTED INSERTION");
+     System.out.println();
+     Scanner scanner = new Scanner(System.in);
 
-    System.out.println("Queue elements:");
-    if (R >= F) {
-        for (int i = F; i <= R; i++) {
-            System.out.print(A[i] + " ");
-        }
-    } else {
-        // If the rear has wrapped around to the front
-        for (int i = F; i <= size + LB - 1; i++) {
-            System.out.print(A[i] + " ");
-        }
-        for (int i = LB; i <= R; i++) {
-            System.out.print(A[i] + " ");
-        }
-    }
-    System.out.println();
-}
-public static void EnqueueCQA(Scanner sc){
-System.out.println("enter the size of circular queue");
-size=sc.nextInt();
-A=new int[size];
-if (R == F - 1 || ((R == (N + LB - 1)) && (F == LB))) {
-    System.out.println("Queue is Full");
-    return;
-}
+     if (CR == CF - 1 || ((CR == (size + lb - 1)) && (CF == lb))) {
+         System.out.println("QUEUE IS FULL");
+         return;
+     }
 
-if (R == LB - 1) {
-    R = LB;
-    F = LB;
-} else {
-    if (R == (N + LB - 1)) {
-        R = LB;
-    } else {
-        R++;
-    }
-}
+     if (CR == lb - 1) {
+         CR = lb;
+         CF = lb;
+     } else {
+         if (CR == (size + lb - 1)) {
+             CR = lb;
+         } else {
+             CR++;
+         }
+     }
 
-System.out.print("Enter the value you want to insert\t");
-item = sc.nextInt();
-A[R] = item;
-}
+     System.out.print("ENTER THE VALUE U WANT TO INSERT"+" ");
+     item = scanner.nextInt();
+     CQ[CR] = item;
+     System.out.println("\nITEM INSERTED");
+     System.out.println("\nPRESS 'Y' to INSERT AGAIN");
+     ch= scanner.next().charAt(0);
+
+         }
+ while(ch=='y' || ch=='Y');
+ System.out.println("RETURNING....");
+ }
+ 
+
 public static void DequeueCQA(){
-if (F == LB - 1) {
-    System.out.println("Queue is Empty");
+
+char ch = 'y';
+do{
+System.out.print("\033[H\033[2J");
+System.out.println("YOU HAVE SELECTED DELETION");
+System.out.println();
+Scanner scanner = new Scanner(System.in);
+if (CF == lb - 1) {
+    System.out.println("QUEUE IS EMPTY");
     return;
 }
 
-item = A[F];
+item = CQ[CF];
 
-if (F == R) {
-    F = LB - 1;
-    R = LB - 1;
+if (CF == CR) {
+    CF = lb - 1;
+    CR = lb - 1;
 } else {
-    if (F == (N + LB - 1)) {
-        F = LB;
+    if (CF == (size + lb - 1)) {
+        CF = lb;
     } else {
-        F++;
+        CF++;
     }
 }
 
-System.out.println(item + " has been Deleted from Queue");
+System.out.println("["+item+"]" + " DELETED");
+if (CF == lb - 1) {
+    System.out.println("\nQUEUE IS EMPTY");
+    System.out.println("\nRETURNING....");
+    return;
 }
+System.out.println("\nPRESS 'Y' to DELETE AGAIN");
+ch= scanner.next().charAt(0);
+
+    }
+while(ch=='y' || ch=='Y');
+System.out.println("RETURNING....");}
 }
