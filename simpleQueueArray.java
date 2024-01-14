@@ -2,12 +2,24 @@ package DSAProjectF;
 import java.util.Scanner;
 public class simpleQueueArray{
     static Scanner sc = new Scanner(System.in);
-    static int choice;
-     static int F;
-     static int R=-1;
-      static int LB=0;
-       static int A[] ;
-       static int item;
+
+    static int choice, F, R,CF,CR, item, size;
+    static final int lb = 0;
+    static int[] Q;
+    static int[] CQ;
+   public static void Queue() {
+        System.out.print("\033[H\033[2J");
+        System.out.println("YOU HAVE SELECTED  QUEUE");
+        System.out.println();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("ENTER SIZE OF THE QUEUE"+" ");
+        size = scanner.nextInt();
+        Q = new int[size];
+        CQ = new int[20];
+        F  = lb - 1;
+        R  = lb - 1;
+        CF = lb-1;
+        CR = lb-1;}
    /* static class Node{
         int info;
         Node next;
@@ -48,57 +60,90 @@ public class simpleQueueArray{
 /******************** Queue Insertion ****************/		
 /**************************************************************/		
 
-public static void EnqueueA(Scanner sc) {
-    System.out.println("enter the item");
-        item=sc.nextInt();
-        if (F == LB - 1) {
-            System.out.println("Queue is Empty");
+public static void EnqueueA() {
+  
+        char ch = 'y';
+        do{
+        System.out.print("\033[H\033[2J");
+        System.out.println("YOU HAVE SELECTED INSERTION");
+        System.out.println();
+        Scanner scanner = new Scanner(System.in);
+
+        if (R == size + lb - 1) {
+            System.out.println("QUEUE IS FULL");
+            System.out.println("RETURNING.....");
             return;
         }
-    
-        System.out.println("Queue elements:");
-        for (int i = F; i <= R; i++) {
-            System.out.print(A[i] + " ");
+
+        if (R == (lb - 1)) {
+            R = lb;
+            F = lb;
+        } else {
+            R++;
         }
-        System.out.println();
-       
-        
+
+        System.out.print("ENTER THE VALUE U WANT TO INSERT"+" ");
+        item = scanner.nextInt();
+        Q[R] = item;
+        System.out.println("\nPRESS 'Y' to INSERT AGAIN");
+        ch= scanner.next().charAt(0);
     }
+    while(ch =='y' || ch =='Y');
+    System.out.println("RETURNING....");
+    } 
+     
+    
 	
 
 public static void DequeueA() {
-    if (F == LB - 1) {
-        System.out.println("Queue is Empty");
+    char ch = 'y';
+    do{
+    System.out.print("\033[H\033[2J");
+    System.out.println("YOU HAVE SELECTED DELETION");
+    System.out.println();
+    Scanner scanner = new Scanner(System.in);
+    if (F == lb - 1) {
+        System.out.println("QUEUE IS EMPTY");
         return;
     }
 
-    item = A[F];
+    item = Q[F];
 
     if (F == R) {
-        F = LB - 1;
-        R = LB - 1;
+        F = lb - 1;
+        R = lb - 1;
     } else {
         F++;
     }
 
-    System.out.println(item + " has been Deleted from Queue");
+    System.out.println("["+item+"]" + " DELETED");
+    System.out.println();
+    if (F == lb - 1) {
+        System.out.println("QUEUE IS EMPTY");
+        System.out.println("RETURNING....");
+        return;
+    }
+    System.out.println("\nPRESS 'Y' to DELETE AGAIN");
+    ch= scanner.next().charAt(0);
+}
+while(ch=='y' || ch=='Y');
+System.out.println("RETURNING....");
 }
 public static void TraverseSQA(){
-    if (F == LB - 1) {
-        System.out.println("Queue is Empty");
+    System.out.print("\033[H\033[2J");
+    System.out.println("YOU HAVE SELECTED TRAVERSE");
+    System.out.println();
+    if (F == lb - 1) {
+        System.out.println("QUEUE IS EMPTY");
+        System.out.println("\nRETURNING.....");
         return;
     }
 
-    System.out.println("Queue elements:");
     for (int i = F; i <= R; i++) {
-        System.out.print(A[i] + " ");
+        System.out.print("[" + Q[i] + "]");
     }
-    System.out.println(); 
-   /*  Node ptr = F;
-        while(ptr!=null) {
-            System.out.println(ptr.info);
-            ptr = ptr.next;
-        }*/
+
+    System.out.println();
     }
 
 }
